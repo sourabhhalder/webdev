@@ -36,16 +36,58 @@
             padding: 0 20px;
         }
 
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        nav {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+
         .nav-links {
             list-style: none;
             display: flex;
             gap: 30px;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* --- Global Button Hover & Zoom Effects --- */
+        .btn-hover-effect {
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        .btn-hover-effect:hover {
+            background-color: #ff4757 !important; /* Turns Red */
+            transform: scale(0.95); /* Zoom out effect */
+        }
+
+        .login-btn-nav {
+            background-color: #28a745;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: bold;
         }
 
         /* --- Hero Section (Image Left, Text Right) --- */
@@ -53,7 +95,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 50px 60px; /* Top padding accounts for fixed header */
+            padding: 140px 50px 80px; /* Top padding for fixed header */
             background-color: white;
             gap: 50px;
             flex-wrap: wrap;
@@ -67,31 +109,57 @@
         }
 
         .hero-text { flex: 1; max-width: 500px; }
-        .hero-text h1 { font-size: 38px; color: #2d3436; margin-bottom: 20px; }
-        .hero-text p { font-size: 18px; color: #636e72; line-height: 1.6; }
+        .hero-text h1 { font-size: 42px; color: #2d3436; margin-bottom: 20px; line-height: 1.2; }
+        .hero-text p { font-size: 18px; color: #636e72; line-height: 1.6; margin-bottom: 30px; }
+
+        .btn-hero {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
 
         /* --- Registration Section --- */
         main {
-            padding: 60px 20px;
+            padding: 80px 20px;
             display: flex;
             justify-content: center;
+            background-color: #f4f4f4;
         }
 
         .form-container {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 12px;
             width: 100%;
-            max-width: 380px;
+            max-width: 400px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border-top: 5px solid #28a745;
         }
 
-        /* --- The Full 4-Column Footer --- */
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* --- Footer Section --- */
         footer {
             background-color: #2d3436;
             color: white;
-            padding: 50px 20px 20px;
+            padding: 60px 20px 20px;
             margin-top: auto;
         }
 
@@ -108,16 +176,16 @@
         .footer-section h4 {
             border-bottom: 2px solid #28a745;
             padding-bottom: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: inline-block;
         }
 
         .footer-links { list-style: none; padding: 0; margin: 0; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #bdc3c7; text-decoration: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #bdc3c7; text-decoration: none; transition: 0.3s; }
         .footer-links a:hover { color: #28a745; }
 
-        /* Inline Subscribe form */
+        /* Inline Subscribe Form */
         .subscribe-group {
             display: flex;
             margin-top: 15px;
@@ -135,10 +203,19 @@
             background-color: #28a745;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 0 20px;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
             font-weight: bold;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #7f8c8d;
         }
     </style>
 </head>
@@ -146,37 +223,50 @@
 
     <header>
         <div class="navbar">
-            <div style="font-size: 24px; font-weight: bold; color: #28a745;">🚀 MyBrand</div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#" style="background:#28a745; color:white; padding:8px 15px; border-radius:5px;">Login</a></li>
-            </ul>
+            <a href="#" class="logo">🚀 MyBrand</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right">
+                <a href="#" class="login-btn-nav btn-hover-effect">Login</a>
+            </div>
         </div>
     </header>
 
     <section class="hero-section">
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&q=80&w=1000" alt="Slambook Illustration">
+            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&q=80&w=1000" alt="Building Memories">
         </div>
         <div class="hero-text">
             <h1>Building the future of digital slambooks.</h1>
             <p>Connect with your inner circle, share your favorite secrets, and create a digital time capsule that lasts forever.</p>
+            <a href="#register-area" class="btn-hero btn-hover-effect">Get Started Now</a>
         </div>
     </section>
 
-    <main>
-        <div class="form-container">
-            <h2 style="text-align: center;">Register</h2>
+    <main id="register-area">
+        <section class="form-container">
+            <h2 style="text-align: center; margin-top: 0;">Register</h2>
             <form action="#">
-                <div style="margin-bottom:15px;">
-                    <label style="display:block; margin-bottom:5px; font-weight:bold;">Email</label>
-                    <input type="email" placeholder="Enter your email" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; box-sizing:border-box;">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Your Name" required>
                 </div>
-                <button type="submit" style="width:100%; padding:12px; background:#28a745; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">Get Started</button>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-submit btn-hover-effect">Create Account</button>
             </form>
-        </div>
+        </section>
     </main>
 
     <footer>
@@ -184,7 +274,7 @@
             
             <section class="footer-section">
                 <div style="font-size: 24px; font-weight: bold; color: white;">MyBrand</div>
-                <p style="color: #bdc3c7; font-size: 14px; margin-top: 10px;">Building the future of digital slambooks.</p>
+                <p style="color: #bdc3c7; font-size: 14px; margin-top: 15px; line-height: 1.6;">Building the future of digital slambooks.</p>
             </section>
 
             <section class="footer-section">
@@ -209,14 +299,14 @@
                 <h4>Newsletter</h4>
                 <p style="font-size: 14px; color: #bdc3c7;">Enter your email to subscribe:</p>
                 <form class="subscribe-group">
-                    <input type="email" placeholder="Email" required>
-                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                    <input type="email" placeholder="Email address" required>
+                    <button type="submit" class="subscribe-btn btn-hover-effect">Subscribe</button>
                 </form>
             </section>
 
         </div>
         
-        <div style="text-align: center; margin-top: 40px; border-top: 1px solid #444; padding-top: 20px; font-size: 12px; color: #7f8c8d;">
+        <div class="copyright">
             &copy; 2026 MyBrand Slambook. All rights reserved.
         </div>
     </footer>
